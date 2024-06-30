@@ -21,7 +21,8 @@ const Login = () => {
 
       if (res?.data?.message === "Login Successfully") {
         toast.success("Successfully LoggedIn", { id: toastId, duration: 2000 });
-        localStorage.setItem("access_token", JSON.stringify(res?.data?.data));
+        localStorage.setItem("access_token",res?.data?.data);
+        // localStorage.setItem("access_token", JSON.stringify(res?.data?.data));
         navigate("/dashboard");
       }
       if (res?.data?.message === "Something went wrong") {

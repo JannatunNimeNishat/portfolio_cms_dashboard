@@ -1,0 +1,32 @@
+/* Example CSS for the sidebar */
+
+.nav-link {
+    display: block;
+    padding: 10px 20px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .nav-link:hover {
+    background-color: #1a1a1a;
+    border-radius: 5px;
+  }
+  
+  .nav-link.active {
+    background-color: #1677ff;
+    border-radius: 20px;
+    font-weight: bold;
+    color: white;
+
+  }
+  
+  /* Additional styles for better user experience */
+  .ant-menu-item {
+    padding: 0;
+  }
+  
+  .ant-menu-item::after {
+    border-right: 0 !important;
+  }
+  
