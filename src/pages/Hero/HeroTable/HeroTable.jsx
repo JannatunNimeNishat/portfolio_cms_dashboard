@@ -17,7 +17,7 @@ const HeroTable = () => {
   const [editFromState, setEditFromState] = useState(false);
 
   const [selectedHeroData, setSelectedHeroData] = useState();
-  
+
   const handleDelete = async (data) => {
     const API_URL = import.meta.env.VITE_API_URL;
     const toastId = toast.loading("Deleting, please wait...");
