@@ -9,7 +9,7 @@ import MainForm from "../../../components/form/MainForm";
 import MainInput from "../../../components/form/MainInput";
 import MainMultiSelect from "../../../components/form/MainMultiSelect";
 import { Button } from "antd";
-import StatusRadio from "../../../components/form/MainRadio";
+
 
 const EditHero = ({
   setEditFromState,
@@ -21,9 +21,9 @@ const EditHero = ({
     name: selectedHeroData.name,
     dentation: selectedHeroData.dentation,
     tags: selectedHeroData.tags,
-    status: selectedHeroData.status,
+   // status: selectedHeroData.status,
   };
-  
+
   const methods = useForm({
     defaultValues: defaultValues,
   });
@@ -33,7 +33,7 @@ const EditHero = ({
 
     try {
       const res = await axios.put(
-        `${API_URL}/hero/status/${selectedHeroData._id}`,
+        `${API_URL}/hero/${selectedHeroData._id}`,
         value,
         {
           headers: {
@@ -41,7 +41,7 @@ const EditHero = ({
           },
         }
       );
-      if (res?.data?.message === "Status Changed Successfully") {
+      if (res?.data?.message === "Hero edited Successfully") {
         toast.success(res?.data?.message, { id: toastId, duration: 2000 });
         heroTableDataRefetch();
       }
@@ -102,15 +102,7 @@ const EditHero = ({
             options={tagOptions}
             placeholder={"Select one"}
           />
-          <StatusRadio
-            name="status"
-            label="Status"
-            required={false}
-            options={[
-              { label: "Active", value: true },
-              { label: "Inactive", value: false },
-            ]}
-          />
+          
           <Button
             className="ml-5 mb-5"
             style={{

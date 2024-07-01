@@ -1,53 +1,51 @@
-import { DeleteFilled, EditFilled } from "@ant-design/icons";
 import { Popconfirm, Space, Table } from "antd";
 import useGetData from "../../../hooks/useGetData";
-import axios from "axios";
-import { toast } from "sonner";
-import { getAuthToken } from "../../../utils/authServices";
+import { DeleteFilled, EditFilled } from "@ant-design/icons";
 import { useState } from "react";
-import EditHero from "../EditHero/EditHero";
+import { toast } from "sonner";
+import axios from "axios";
+import { getAuthToken } from "../../../utils/authServices";
+import EditAbout from "../EditAbout/EditAbout";
 
-const HeroTable = () => {
+const AboutTable = () => {
   const {
-    data: heroTableData,
-    dataLoading: heroTableDataLoading,
-    refetch: heroTableDataRefetch,
-  } = useGetData({ url: "/hero" });
+    data: aboutTableData,
+    dataLoading: aboutTableDataLoading,
+    refetch: aboutTableDataRefetch,
+  } = useGetData({ url: "/about" });
 
   const [editFromState, setEditFromState] = useState(false);
 
-  const [selectedHeroData, setSelectedHeroData] = useState();
+  const [selectedAboutData, setSelectedAboutData] = useState();
 
   const handleDelete = async (data) => {
     const API_URL = import.meta.env.VITE_API_URL;
     const toastId = toast.loading("Deleting, please wait...");
     try {
-      const res = await axios.delete(`${API_URL}/hero/${data?._id}`, {
+      const res = await axios.delete(`${API_URL}/about/${data?._id}`, {
         headers: {
           Authorization: getAuthToken(),
         },
       });
-      if (res?.data?.message === "Hero deleted Successfully") {
-        heroTableDataRefetch();
+      if (res?.data?.message === "About deleted Successfully") {
+        aboutTableDataRefetch();
         toast.success(res?.data?.message, { id: toastId, duration: 2000 });
       }
     } catch (error) {
       console.log(error);
     }
   };
-
   const handelEditFromState = (data) => {
     setEditFromState(true);
-    setSelectedHeroData(data);
+    setSelectedAboutData(data);
   };
 
   const handleStatusChange = async(id)=> {
-    console.log(id);
     const API_URL = import.meta.env.VITE_API_URL;
     const toastId = toast.loading("Updating, please wait...");
     try {
       const res = await axios.put(
-        `${API_URL}/hero/status/${id}`,{},
+        `${API_URL}/about/status/${id}`,{},
         {
           headers: {
             Authorization: getAuthToken(),
@@ -56,7 +54,7 @@ const HeroTable = () => {
       );
       if (res?.data?.message === "Status Changed Successfully") {
         toast.success(res?.data?.message, { id: toastId, duration: 2000 });
-        heroTableDataRefetch();
+        aboutTableDataRefetch();
       }
     } catch (error) {
       toast.error(error?.response?.data?.message, {
@@ -66,18 +64,19 @@ const HeroTable = () => {
     }
   }
 
+
+
   const columns = [
     {
-      title: "Greetings",
-      dataIndex: "greetings",
-    },
-    {
-      title: "Name",
-      dataIndex: "name",
-    },
-    {
-      title: "Designation",
-      dataIndex: "dentation",
+      title: "Photo",
+      dataIndex: "photoUrl",
+      render: (_, record) => {
+        return (
+          <>
+            <img className="h-8 w-8" src={record.photoUrl} alt="" />
+          </>
+        );
+      },
     },
     {
       title: "Status",
@@ -86,7 +85,7 @@ const HeroTable = () => {
         <Space size="middle">
           <Popconfirm
             title={`Are you sure you want to ${record?.status ? "inactive":"activate"} this?`}
-            onConfirm={() => handleStatusChange(record?._id)}
+          onConfirm={() => handleStatusChange(record?._id)}
             okText="Yes"
             cancelText="No"
           >
@@ -97,14 +96,17 @@ const HeroTable = () => {
           </Popconfirm>
         </Space>
       ),
-     
-    },
-    {
-      title: "Tags",
-      dataIndex: "tags",
-      render: (_, record) => {
-        return <span className="">{record?.tags?.join(", ")}</span>;
-      },
+     /*  render: (_, record) => {
+        return (
+          <p>
+            {record.status ? (
+              <span className="text-green-500">active</span>
+            ) : (
+              <span className="text-red-500">inactive</span>
+            )}
+          </p>
+        );
+      }, */
     },
     {
       title: "Action",
@@ -130,27 +132,34 @@ const HeroTable = () => {
         </Space>
       ),
     },
+    
+    {
+      title: "Desc",
+      dataIndex: "desc",
+    },
+    
+   
   ];
 
   return (
     <div className="w-10/12 mx-auto my-16 border rounded-lg ">
-      <h1 className="text-xl font-semibold p-5">Hero Sections</h1>
+      <h1 className="text-xl font-semibold p-5">About Sections</h1>
       <div className="mt-5">
         {/* hero table */}
         {!editFromState && (
           <Table
-            loading={heroTableDataLoading}
+            loading={aboutTableDataLoading}
             columns={columns}
-            dataSource={heroTableData?.data}
+            dataSource={aboutTableData?.data}
             scroll={{ x: "max-content" }}
           />
         )}
-        {/* edit form */}
+        {/* hero form */}
         {editFromState && (
-          <EditHero
+          <EditAbout
             setEditFromState={setEditFromState}
-            selectedHeroData={selectedHeroData}
-            heroTableDataRefetch={heroTableDataRefetch}
+            selectedAboutData={selectedAboutData}
+            aboutTableDataRefetch={aboutTableDataRefetch}
           />
         )}
       </div>
@@ -158,4 +167,4 @@ const HeroTable = () => {
   );
 };
 
-export default HeroTable;
+export default AboutTable;

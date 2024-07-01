@@ -45,7 +45,7 @@ const CreateAbout = () => {
   return (
     <div className="w-10/12 mx-auto my-16 border rounded-lg ">
       <h1 className="text-xl font-semibold p-5">Create About Section</h1>
-      <div>
+      
         <MainForm onSubmit={handleCreateAbout} methods={methods}>
           <MainTextArea
             name="desc"
@@ -67,7 +67,7 @@ const CreateAbout = () => {
             Create
           </Button>
         </MainForm>
-      </div>
+      
     </div>
   );
 };

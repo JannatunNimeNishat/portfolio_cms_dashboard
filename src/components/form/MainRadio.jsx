@@ -2,7 +2,7 @@
 import { Radio } from "antd";
 import { Controller, useFormContext } from "react-hook-form";
 
-const StatusRadio = ({ name, label, required = true, options }) => {
+const MainRadio = ({ name, label, required = true, options }) => {
   const {
     formState: { errors },
   } = useFormContext();
@@ -30,4 +30,4 @@ const StatusRadio = ({ name, label, required = true, options }) => {
   );
 };
 
-export default StatusRadio;
+export default MainRadio;
