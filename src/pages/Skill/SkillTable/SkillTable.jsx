@@ -13,7 +13,7 @@ const SkillTable = () => {
     dataLoading: skillTableDataLoading,
     refetch: skillTableDataRefetch,
   } = useGetData({ url: "/skill" });
-  console.log(skillTableData);
+ 
   const [editFromState, setEditFromState] = useState(false);
 
   const [selectedSkillData, setSelectedSkillData] = useState();

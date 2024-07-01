@@ -73,7 +73,7 @@ const AboutTable = () => {
       render: (_, record) => {
         return (
           <>
-            <img className="h-8 w-8" src={record.photoUrl} alt="" />
+            <img className="h-8 w-8" src={record?.photoUrl} alt="" />
           </>
         );
       },

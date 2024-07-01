@@ -2,6 +2,7 @@ import { EditFilled, PlusCircleFilled } from "@ant-design/icons";
 import { useState } from "react";
 
 import CreateProject from "./CreateProject/CreateProject";
+import ProjectTable from "./ProjectTable/ProjectTable";
 
 const Projects = () => {
   const [createEditFormState, setCreateEditFormState] = useState(0);
@@ -57,10 +58,16 @@ const Projects = () => {
           />
         </div>
       </div>
-       {/* forms */}
-       {createEditFormState === 1 && (
+      {/* forms */}
+      {createEditFormState === 1 && (
         <div className={``}>
           <CreateProject />
+        </div>
+      )}
+      {/* table */}
+      {createEditFormState === 2 && (
+        <div className={``}>
+          <ProjectTable />
         </div>
       )}
     </div>
