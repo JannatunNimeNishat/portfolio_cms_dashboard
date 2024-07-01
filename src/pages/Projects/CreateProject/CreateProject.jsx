@@ -33,7 +33,6 @@ const CreateProject = () => {
           Authorization: getAuthToken(),
         },
       });
-      console.log(res?.data);
       if (res?.data?.message === "Project created Successfully") {
         toast.success(res?.data?.message, { id: toastId, duration: 2000 });
         methods.reset();
@@ -82,7 +81,7 @@ const CreateProject = () => {
         />
         <MainMultiSelect
           name="technologyUsed"
-          label="technology used: "
+          label="technology used"
           options={technologyUsedOptions}
           placeholder={"Select one"}
         />
