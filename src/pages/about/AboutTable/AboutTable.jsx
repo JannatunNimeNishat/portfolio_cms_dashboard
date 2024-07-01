@@ -96,17 +96,6 @@ const AboutTable = () => {
           </Popconfirm>
         </Space>
       ),
-     /*  render: (_, record) => {
-        return (
-          <p>
-            {record.status ? (
-              <span className="text-green-500">active</span>
-            ) : (
-              <span className="text-red-500">inactive</span>
-            )}
-          </p>
-        );
-      }, */
     },
     {
       title: "Action",

@@ -19,8 +19,6 @@ const CreateSkill = () => {
         category: values?.category,
         percentage: Number(values?.percentage),
       };
-
-     console.log(skillData);
       const res = await axios.post(`${API_URL}/skill`, skillData, {
         headers: {
           Authorization: getAuthToken(),

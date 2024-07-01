@@ -1,6 +1,7 @@
 import { EditFilled, PlusCircleFilled } from "@ant-design/icons";
 import { useState } from "react";
 import CreateSkill from "./CreateSkill/CreateSkill";
+import SkillTable from "./SkillTable/SkillTable";
 
 const Skill = () => {
   const [createEditFormState, setCreateEditFormState] = useState(0);
@@ -57,9 +58,18 @@ const Skill = () => {
         </div>
       </div>
       {/* forms */}
-      {createEditFormState === 1 &&  <div className={``}>
-        <CreateSkill/>
-      </div>}
+      {createEditFormState === 1 && (
+        <div className={``}>
+          <CreateSkill />
+        </div>
+      )}
+
+      {/* table */}
+      {createEditFormState === 2 && (
+        <div className={``}>
+          <SkillTable />
+        </div>
+      )}
     </div>
   );
 };
