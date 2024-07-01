@@ -4,6 +4,7 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import PrivateRoute from "./PrivateRoute";
 import Hero from "../pages/Hero/Hero";
 import About from "../pages/about/About";
+import Skill from "../pages/Skill/Skill";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
     children: [
       { path: "hero", element: <Hero /> },
       { path: "about", element: <About /> },
+      { path: "skill", element: <Skill /> },
     ],
   },
 ]);
