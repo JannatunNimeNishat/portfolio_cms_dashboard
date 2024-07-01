@@ -80,7 +80,7 @@ const SkillTable = () => {
   ];
 
   return (
-    <div className="w-10/12 mx-auto my-16 border rounded-lg ">
+    <div className="lg:w-10/12 mx-auto my-16 border rounded-lg ">
       <h1 className="text-xl font-semibold p-5">Skill Section</h1>
       {/* skill table */}
       {!editFromState && (

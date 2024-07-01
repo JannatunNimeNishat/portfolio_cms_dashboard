@@ -16,7 +16,7 @@ const Hero = () => {
     <div className="w-full h-full">
       {/* <DeleteHero /> */}
       {/* buttons */}
-      <div className={` flex items-center justify-center gap-8`}>
+      <div className={` flex flex-col lg:flex-row items-center justify-center gap-8`}>
         {/*create btn  */}
         <div
           className={`w-[250px] h-[250px] ${createEditFormState === 1 ? "border border-green-500  bg-green-50":"hover:shadow-2xl"}  rounded-lg flex flex-col gap-2 items-center justify-center shadow-lg  duration-200 cursor-pointer `}

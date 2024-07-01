@@ -10,7 +10,7 @@ const Education = () => {
   return (
     <div className="w-full h-full">
       {/* buttons */}
-      <div className={` flex items-center justify-center gap-8`}>
+      <div className={` flex flex-col lg:flex-row items-center justify-center gap-8`}>
         {/*create btn  */}
         <div
           className={`w-[250px] h-[250px] ${
