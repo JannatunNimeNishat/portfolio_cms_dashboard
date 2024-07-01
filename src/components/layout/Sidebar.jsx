@@ -11,7 +11,13 @@ const Sidebar = () => {
       key: "hero",
       label: <NavLink className={({ isActive }) =>
         isActive ? 'nav-link active' : 'nav-link'
-      } to={`/dashboard/hero`}>Hero</NavLink>,
+      } to={`/dashboard/hero`}>Hero Section</NavLink>,
+    },
+    {
+      key: "about",
+      label: <NavLink className={({ isActive }) =>
+        isActive ? 'nav-link active' : 'nav-link'
+      } to={`/dashboard/about`}>About Section</NavLink>,
     },
   ];
 
