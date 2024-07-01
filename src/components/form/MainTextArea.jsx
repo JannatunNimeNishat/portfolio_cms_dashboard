@@ -26,6 +26,10 @@ const MainTextArea = ({ name, label, required = true, placeholder }) => {
             <TextArea
               placeholder={placeholder}
               style={{ marginTop: "5px" }}
+              autoSize={{
+                minRows: 8,
+                maxRows: 10,
+              }}
               {...field}
               id={name}
             />
