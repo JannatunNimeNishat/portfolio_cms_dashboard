@@ -25,6 +25,12 @@ const Sidebar = () => {
         isActive ? 'nav-link active' : 'nav-link'
       } to={`/dashboard/skill`}>Skill Section</NavLink>,
     },
+    {
+      key: "projects",
+      label: <NavLink className={({ isActive }) =>
+        isActive ? 'nav-link active' : 'nav-link'
+      } to={`/dashboard/projects`}>Projects Section</NavLink>,
+    },
   ];
 
   return (
