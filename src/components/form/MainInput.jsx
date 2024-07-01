@@ -11,7 +11,7 @@ const MainInput = ({ type, name, label, required = true, placeholder }) => {
     <div style={{ margin: "20px" }}>
       {label ? (
         <label style={{ fontWeight: "500" }} htmlFor={name}>
-          {label}
+          {label}:
         </label>
       ) : null}
       <Controller

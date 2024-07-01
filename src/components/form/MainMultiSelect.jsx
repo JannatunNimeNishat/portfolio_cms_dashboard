@@ -4,7 +4,7 @@ import { Controller, useFormContext } from "react-hook-form";
 
 const { Option } = Select;
 
-const MainMultiSelect = ({ name, label, required = true, placeholder, options = [] }) => {
+const MainMultiSelect = ({ name, label,mode="tags", required = true, placeholder, options = [] }) => {
   const {
     formState: { errors },
   } = useFormContext();
@@ -24,7 +24,8 @@ const MainMultiSelect = ({ name, label, required = true, placeholder, options = 
         render={({ field }) => (
           <>
             <Select
-              mode="tags"
+              mode={mode}
+              //mode="tags"
               placeholder={placeholder}
               style={{ width: '100%', marginTop: "5px" }}
               {...field}
