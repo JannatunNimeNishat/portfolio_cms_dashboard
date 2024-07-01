@@ -1,11 +1,11 @@
 import { useState } from "react";
-import DeleteHero from "./DeleteHero/DeleteHero";
+// import DeleteHero from "./DeleteHero/DeleteHero";
 import {
   EditFilled,
   PlusCircleFilled,
-  PlusCircleOutlined,
 } from "@ant-design/icons";
 import CreateHero from "./CreateHero/CreateHero";
+import HeroTable from "./HeroTable/HeroTable";
 
 const Hero = () => {
   const [createEditFormState, setCreateEditFormState] = useState(0);
@@ -14,7 +14,7 @@ const Hero = () => {
   };
   return (
     <div className="w-full h-full">
-      <DeleteHero />
+      {/* <DeleteHero /> */}
       {/* buttons */}
       <div className={` flex items-center justify-center gap-8`}>
         {/*create btn  */}
@@ -36,9 +36,12 @@ const Hero = () => {
       </div>
 
       {/* forms */}
-      <div className={`${createEditFormState === 1 ? "opacity-100":"opacity-0 pointer-events-none"}`}>
+      {createEditFormState === 1 &&  <div className={``}>
         <CreateHero/>
-      </div>
+      </div>}
+      { createEditFormState === 2 &&<div >
+        <HeroTable/>
+      </div>}
     </div>
   );
 };

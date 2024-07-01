@@ -1,28 +1,49 @@
+/* eslint-disable react/prop-types */
+
+import axios from "axios";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { getAuthToken } from "../../../utils/authServices";
+import { ArrowLeftOutlined } from "@ant-design/icons";
 import MainForm from "../../../components/form/MainForm";
 import MainInput from "../../../components/form/MainInput";
 import MainMultiSelect from "../../../components/form/MainMultiSelect";
 import { Button } from "antd";
-import { toast } from "sonner";
-import axios from "axios";
-import { getAuthToken } from "../../../utils/authServices";
+import StatusRadio from "../../../components/form/MainRadio";
 
-const CreateHero = () => {
-  const methods = useForm();
-  const handleCreateHero = async (value) => {
+const EditHero = ({
+  setEditFromState,
+  selectedHeroData,
+  heroTableDataRefetch,
+}) => {
+  const defaultValues = {
+    greetings: selectedHeroData.greetings,
+    name: selectedHeroData.name,
+    dentation: selectedHeroData.dentation,
+    tags: selectedHeroData.tags,
+    status: selectedHeroData.status,
+  };
+  
+  const methods = useForm({
+    defaultValues: defaultValues,
+  });
+  const handleEditHero = async (value) => {
     const API_URL = import.meta.env.VITE_API_URL;
-    const toastId = toast.loading("Creating, please wait...");
+    const toastId = toast.loading("Updating, please wait...");
 
-    methods.reset();
     try {
-      const res = await axios.post(`${API_URL}/hero`, value, {
-        headers: {
-          Authorization: getAuthToken(),
-        },
-      });
-
-      if (res?.data?.message === "Hero created Successfully") {
+      const res = await axios.put(
+        `${API_URL}/hero/status/${selectedHeroData._id}`,
+        value,
+        {
+          headers: {
+            Authorization: getAuthToken(),
+          },
+        }
+      );
+      if (res?.data?.message === "Status Changed Successfully") {
         toast.success(res?.data?.message, { id: toastId, duration: 2000 });
+        heroTableDataRefetch();
       }
     } catch (error) {
       toast.error(error?.response?.data?.message, {
@@ -46,10 +67,17 @@ const CreateHero = () => {
     },
   ];
   return (
-    <div className="w-10/12 mx-auto my-16 border rounded-lg ">
-      <h1 className="text-xl font-semibold p-5">Create Hero Section</h1>
-      <div className="">
-        <MainForm onSubmit={handleCreateHero} methods={methods}>
+    <div>
+      {/* back */}
+      <div
+        className="flex items-center gap-1 cursor-pointer pl-5"
+        onClick={() => setEditFromState(false)}
+      >
+        <ArrowLeftOutlined className="text-xl" />
+        <p className="">Back</p>
+      </div>
+      <div className="mt-5">
+        <MainForm onSubmit={handleEditHero} methods={methods}>
           <MainInput
             name="greetings"
             type="text"
@@ -74,7 +102,15 @@ const CreateHero = () => {
             options={tagOptions}
             placeholder={"Select one"}
           />
-
+          <StatusRadio
+            name="status"
+            label="Status"
+            required={false}
+            options={[
+              { label: "Active", value: true },
+              { label: "Inactive", value: false },
+            ]}
+          />
           <Button
             className="ml-5 mb-5"
             style={{
@@ -85,7 +121,7 @@ const CreateHero = () => {
             }}
             htmlType="submit"
           >
-            Create
+            Update
           </Button>
         </MainForm>
       </div>
@@ -93,4 +129,4 @@ const CreateHero = () => {
   );
 };
 
-export default CreateHero;
+export default EditHero;
