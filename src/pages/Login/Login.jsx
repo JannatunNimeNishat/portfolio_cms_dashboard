@@ -22,8 +22,7 @@ const Login = () => {
       if (res?.data?.message === "Login Successfully") {
         toast.success("Successfully LoggedIn", { id: toastId, duration: 2000 });
         localStorage.setItem("access_token",res?.data?.data);
-        // localStorage.setItem("access_token", JSON.stringify(res?.data?.data));
-        navigate("/dashboard");
+        navigate("/dashboard/hero");
       }
       if (res?.data?.message === "Something went wrong") {
         toast.error("email or password incorrect!!!", {
