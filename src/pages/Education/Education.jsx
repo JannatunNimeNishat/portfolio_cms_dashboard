@@ -1,6 +1,7 @@
 import { EditFilled, PlusCircleFilled } from "@ant-design/icons";
 import { useState } from "react";
 import CreateEducation from "./CreateEducation/CreateEducation";
+import EducationTable from "./EducationTable/EducationTable";
 
 const Education = () => {
   const [createEditFormState, setCreateEditFormState] = useState(0);
@@ -62,6 +63,13 @@ const Education = () => {
           <CreateEducation />
         </div>
       )}
+      {/* table */}
+      {createEditFormState === 2 && (
+        <div className={``}>
+          <EducationTable />
+        </div>
+      )}
+      
     </div>
   );
 };

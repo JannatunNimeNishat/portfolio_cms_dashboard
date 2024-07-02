@@ -14,7 +14,7 @@ const ProjectTable = () => {
     dataLoading: projectTableDataLoading,
     refetch: projectTableDataRefetch,
   } = useGetData({ url: "/project" });
-  console.log(projectTableData);
+
   const [editFromState, setEditFromState] = useState(false);
 
   const [selectedProjectData, setSelectedProjectData] = useState();
