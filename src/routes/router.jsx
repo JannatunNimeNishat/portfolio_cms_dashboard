@@ -7,6 +7,7 @@ import About from "../pages/about/About";
 import Skill from "../pages/Skill/Skill";
 import Projects from "../pages/Projects/Projects";
 import Education from "../pages/Education/Education";
+import Experience from "../pages/Experience/Experience";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
     children: [
       { path: "hero", element: <Hero /> },
       { path: "about", element: <About /> },
+      { path: "experience", element: <Experience /> },
       { path: "skill", element: <Skill /> },
       { path: "projects", element: <Projects /> },
       { path: "education", element: <Education /> },

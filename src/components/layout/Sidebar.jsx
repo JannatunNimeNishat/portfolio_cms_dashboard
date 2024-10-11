@@ -34,6 +34,19 @@ const Sidebar = () => {
       ),
     },
     {
+      key: "experience",
+      label: (
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "nav-link active" : "nav-link"
+          }
+          to={`/dashboard/experience`}
+        >
+          Experience Section
+        </NavLink>
+      ),
+    },
+    {
       key: "skill",
       label: (
         <NavLink
