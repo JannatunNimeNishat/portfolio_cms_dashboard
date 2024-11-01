@@ -1,5 +1,6 @@
 import { EditFilled, PlusCircleFilled } from "@ant-design/icons";
 import { useState } from "react";
+import CreateExperience from "./CreateExperience/CreateExperience";
 
 
 const Experience = () => {
@@ -59,7 +60,7 @@ const Experience = () => {
           {/* forms */}
           {createEditFormState === 1 && (
           <div className={``}>
-            {/* <CreateEducation /> */}
+            <CreateExperience/>
           </div>
         )}
         {/* table */}
