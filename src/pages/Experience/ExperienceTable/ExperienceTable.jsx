@@ -5,6 +5,7 @@ import axios from "axios";
 import { toast } from "sonner";
 import { getAuthToken } from "../../../utils/authServices";
 import { useState } from "react";
+import EditExperience from "../EditExperience/EditExperience";
 
 
 const ExperienceTable = () => {
@@ -67,24 +68,16 @@ const ExperienceTable = () => {
         ),
       },
     {
-      title: "DegreeName",
-      dataIndex: "degreeName",
-    },
-    {
-      title: "Institute",
-      dataIndex: "institute",
+      title: "Company Name",
+      dataIndex: "companyName",
     },
     {
       title: "Duration",
       dataIndex: "duration",
     },
     {
-      title: "Result",
-      dataIndex: "result",
-    },
-    {
-      title: "Skills",
-      dataIndex: "skills",
+      title: "Desc",
+      dataIndex: "desc",
     },
   ];
 
@@ -102,10 +95,10 @@ const ExperienceTable = () => {
           )}
            {/* edit form */}
            {editFromState && (
-            <EditEducation
+            <EditExperience
               setEditFromState={setEditFromState}
-              selectedEducationData={selectedEducationData}
-              educationTableDataRefetch={educationTableDataRefetch}
+              selectedExperienceData={selectedExperienceData}
+              experienceTableDataRefetch={experienceTableDataRefetch}
             />
           )}
         </div>
